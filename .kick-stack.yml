@@ -1,0 +1,14 @@
+version: "3"
+services:
+  gitdb:
+    image: rudl/gitdb:unstable
+    networks:
+      - rudl-ingress-nginx
+    environment:
+      REPO_GIT_URL: https://github.com/rudl-project/rudl-config-template.git
+      KEYVAULT_SECRET: testtest
+      DEV_SKIP_PUSH: 1
+
+networks:
+  rudl-ingress-nginx:
+    external: true

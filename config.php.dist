@@ -1,0 +1,19 @@
+<?php
+/**
+ * This file is copied to config.php by kick
+ *
+ * Placeholders (\%CONF_ENVNAME\%) are replaced by the values found in environment
+ */
+
+define ("DEV_MODE", (bool)"%DEV_MODE%");
+
+define("GITDB_URL", "%GITDB_URL%");
+define("CLUSTER_SCOPE", "%CLUSTER_SCOPE%");
+define("CERT_SCOPE", "%CERT_SCOPE%");
+define("CERT_ISSUER_URL", "%CERT_ISSUER_URL%");
+
+define("CERT_STORE_DIR", "/etc/nginx/cert");
+define("VHOST_TEMPLATE_FILE", "/opt/conf/vhost.conf.php");
+define("VHOST_TARGET_FILE", "/etc/nginx/vhost.conf");
+
+

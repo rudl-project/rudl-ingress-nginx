@@ -1,0 +1,21 @@
+version: 1
+from: "nfra/kickstart-flavor-php:unstable"
+
+
+packages: [php8.0-curl, php8.0-http, php8.0-raphf, php8.0-mbstring, nginx]
+
+
+config_file:
+  template: "config.php.dist"
+  target: "config.php"
+
+command:
+  build:
+    - "composer update"
+
+  run:
+    - "sudo php -f bin/ingress_hypervise.php"
+  dev:
+
+  test:
+
