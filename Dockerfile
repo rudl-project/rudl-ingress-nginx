@@ -1,4 +1,4 @@
-FROM infracamp/kickstart-flavor-php:unstable
+FROM nfra/kickstart-flavor-php:unstable
 
 ENV DEV_CONTAINER_NAME="rudl-ingress-nginx"
 
