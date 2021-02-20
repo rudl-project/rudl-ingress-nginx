@@ -30,6 +30,7 @@ class Template
         require $this->templateFile;
         $content = ob_get_clean();
 
+
         if ($content !== file_get_contents($this->targetFile)) {
             $this->isUpdated = true;
             file_put_contents($this->targetFile, $content);

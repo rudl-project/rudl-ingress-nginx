@@ -14,11 +14,14 @@ limit_req_zone $binary_remote_addr zone=manager_limit:10m rate=5r/s;
 <?php
 foreach ($__CONF->vhosts as $vhost) {
     $sslCertFile = null;
-    $certIssuerUrl = HostValidator::convertUrlToHostAddr(CERT_ISSUER_URL);
+    $certIssuerUrl = HostValidator::convertUrlToHostAddr(SSL_CERT_ISSUER_URL);
     if (strlen($vhost->ssl_cert) > 1) {
         $sslCertFile = CERT_STORE_DIR . "/" . $vhost->ssl_cert;
-        $sslMode = true;
-        require __DIR__ . "/vhost_nossl.php";
+        if (is_file($sslCertFile)) {
+            $sslMode = true;
+            require __DIR__ . "/vhost_nossl.php";
+        }
+
     }
 
     $sslMode = false;

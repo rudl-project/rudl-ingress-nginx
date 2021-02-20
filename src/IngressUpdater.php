@@ -44,14 +44,16 @@ class IngressUpdater
         try {
             phore_http_request("http://localhost/rudl-cf-selftest")->send();
         } catch (\Exception $ex) {
+            echo "Nginx is not runngin - restarting.\n";
             $this->gitdb->logError("Nginx not running - restarting");
             try {
                 phore_exec("service nginx restart");
             } catch (\Exception $e) {
+                echo "Error: Nginx not starting" . $e->getMessage() . "\n";
                 $this->gitdb->logError("Cant restart nginx: " . $e->getMessage() . "\n" . phore_exec("nginx -t"));
-                sleep(10);
+                throw $e;
             }
-
+            throw $ex;
         }
     }
 
@@ -63,13 +65,18 @@ class IngressUpdater
 
         $updateRequired = $this->parseTemplate(VHOST_TEMPLATE_FILE, VHOST_TARGET_FILE, $ingressConfig);
         if ($updateRequired) {
+
             try {
                 phore_exec("service nginx reload");
+                echo "Nginx reloaded successfully\n";
                 $this->gitdb->logOk("Nginx reloaded after config change");
             } catch (\Exception $e) {
                 throw $e;
             }
+        } else {
+            echo "No reload required (configuration unchanged).\n";
         }
+        $this->checkNginxIsRunning();
     }
 
 
