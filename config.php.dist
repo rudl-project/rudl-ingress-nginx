@@ -7,10 +7,16 @@
 
 define ("DEV_MODE", (bool)"%DEV_MODE%");
 
-define("GITDB_URL", "%GITDB_URL%");
-define("CLUSTER_SCOPE", "%CLUSTER_SCOPE%");
-define("CERT_SCOPE", "%CERT_SCOPE%");
-define("CERT_ISSUER_URL", "%CERT_ISSUER_URL%");
+
+define("RUDL_GITDB_URL", "%RUDL_GITDB_URL%");
+define("RUDL_GITDB_CLIENT_ID", "%RUDL_GITDB_CLIENT_ID%");
+define("RUDL_GITDB_CLIENT_SECRET", "%RUDL_GITDB_CLIENT_SECRET%");
+
+
+define("INGRESS_SCOPE", "%INGRESS_SCOPE?ingress%");
+define("INGRESS_OBJECT_NAME", "%INGRESS_OBJECT_NAME?ingress.nginx.yml%");
+define("SSL_CERT_SCOPE", "%SSL_CERT_SCOPE?certs%");
+define("SSL_CERT_ISSUER_URL", "%SSL_CERT_ISSUER_URL%");
 
 define("CERT_STORE_DIR", "/etc/nginx/cert");
 define("VHOST_TEMPLATE_FILE", "/opt/conf/vhost.conf.php");
