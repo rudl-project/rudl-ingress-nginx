@@ -37,6 +37,10 @@ server {
             deny all;
         }
     }
+    <?php else: ?>
+        location /.well-known/acme-challenge {
+            return 500 'ERROR 500: IssuerURL not configured. CF#05';
+        }
     <?php endif; ?>
 
     <?php foreach ($vhost->locations as $location): ?>
