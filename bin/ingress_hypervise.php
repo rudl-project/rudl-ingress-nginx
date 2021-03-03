@@ -7,7 +7,6 @@ use Rudl\IngressNginx\IngressUpdater;
 use Rudl\LibGitDb\RudlGitDbClient;
 use Rudl\LibGitDb\UpdateRunner;
 
-
 $gitdb = new RudlGitDbClient();
 try {
     $gitdb->loadClientConfigFromEnv();
