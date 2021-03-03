@@ -21,5 +21,4 @@ try {
 }
 
 $runner = new UpdateRunner($gitdb);
-
 $runner->run(new IngressUpdater($gitdb));
