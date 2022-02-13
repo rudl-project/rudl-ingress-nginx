@@ -15,9 +15,11 @@ class IngressUpdater
     ){}
 
 
-    private function syncSslCerts(string $sourceScope, string $targetDir)
+    private function syncSslCerts(string $sourceScope, string $targetDir) : bool
     {
-        $this->gitdb->syncObjects($sourceScope, $targetDir);
+        $changedObjects = [];
+        $this->gitdb->syncObjects($sourceScope, $targetDir, $changedObjects);
+        return count($changedObjects) > 0;
     }
 
     private function loadIngressConfig(string $scope, string $ingressObjectName) : T_IngressConfig
@@ -60,11 +62,11 @@ class IngressUpdater
 
     public function __invoke()
     {
-        $this->syncSslCerts(SSL_CERT_SCOPE, CERT_STORE_DIR);
+        $sslCertsChanged = $this->syncSslCerts(SSL_CERT_SCOPE, CERT_STORE_DIR);
         $ingressConfig = $this->loadIngressConfig(INGRESS_SCOPE, INGRESS_OBJECT_NAME);
 
         $updateRequired = $this->parseTemplate(VHOST_TEMPLATE_FILE, VHOST_TARGET_FILE, $ingressConfig);
-        if ($updateRequired) {
+        if ($updateRequired || $sslCertsChanged) {
 
             try {
                 phore_exec("service nginx reload");
