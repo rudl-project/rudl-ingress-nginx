@@ -20,4 +20,6 @@ try {
 }
 
 $runner = new UpdateRunner($gitdb);
+
+// Update all 5 runs to update newly deployed Vhosts
 $runner->run(new IngressUpdater($gitdb), 5);
