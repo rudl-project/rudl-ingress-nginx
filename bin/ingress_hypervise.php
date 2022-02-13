@@ -20,4 +20,4 @@ try {
 }
 
 $runner = new UpdateRunner($gitdb);
-$runner->run(new IngressUpdater($gitdb));
+$runner->run(new IngressUpdater($gitdb), 5);
