@@ -11,7 +11,7 @@ $certIssuerUrl = HostValidator::convertUrlToHostAddr(SSL_CERT_ISSUER_URL);
 
 <?php if ($certIssuerUrl !== null): ?>
 location /.well-known/acme-challenge {
-    limit_req zone=manager_limit burst=50 nodelay;
+    limit_req zone=acme_limit burst=10 nodelay;
     proxy_set_header Host $host;
     proxy_set_header X-Request-Id $request_id;
 
