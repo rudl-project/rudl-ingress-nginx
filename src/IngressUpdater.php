@@ -65,6 +65,8 @@ class IngressUpdater
         $sslCertsChanged = $this->syncSslCerts(SSL_CERT_SCOPE, CERT_STORE_DIR);
         $ingressConfig = $this->loadIngressConfig(INGRESS_SCOPE, INGRESS_OBJECT_NAME);
 
+
+        $this->parseTemplate(ACME_TEMPLATE_FILE, ACME_TARGET_FILE, $ingressConfig);
         $updateRequired = $this->parseTemplate(VHOST_TEMPLATE_FILE, VHOST_TARGET_FILE, $ingressConfig);
         if ($updateRequired || $sslCertsChanged) {
 

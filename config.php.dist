@@ -22,4 +22,5 @@ define("CERT_STORE_DIR", "/etc/nginx/cert");
 define("VHOST_TEMPLATE_FILE", "/opt/conf/vhost.conf.php");
 define("VHOST_TARGET_FILE", "/etc/nginx/vhost.conf");
 
-
+define("ACME_TEMPLATE_FILE", "/opt/conf/acme.conf.php");
+define("ACME_TARGET_FILE", "/etc/nginx/acme.conf");

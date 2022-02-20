@@ -69,7 +69,7 @@ server {
                     if ($request_method = GET) {
                         return 301 https://$host$request_uri;
                     }
-                    return 403 'ERROR 403: SSL Encryption required: Unencrypted http request to encypted endpoint. "$scheme://$host$request_uri"\n\ncloudfront req_id: $request_id\nhost: $hostname\n\nCode: CF#02';
+                    return 403 'ERROR 403: SSL Encryption required: Unencrypted http request to encrypted endpoint. "$scheme://$host$request_uri"\n\ncloudfront req_id: $request_id\nhost: $hostname\n\nCode: CF#02';
 
                 <?php else: ?>
 
