@@ -2,7 +2,6 @@
 Nginx ingress controller
 
 
-
 ## Configuration
 
 | Environment Variable      | Description |
