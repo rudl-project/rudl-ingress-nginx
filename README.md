@@ -14,3 +14,4 @@ Nginx ingress controller
 | SSL_CERT_SCOPE            | The scope to sync ssl-certificates (*.pem - objects) from                        |
 | SSL_CERT_ISSUER_URL       | The full url to the issuer service (http://cert_issuer)     |
 
+
