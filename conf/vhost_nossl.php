@@ -18,6 +18,8 @@ server {
         ssl_certificate       <?php echo $sslCertFile; ?>;
         ssl_certificate_key   <?php echo $sslCertFile; ?>;
 
+        add_header Strict-Transport-Security "max-age=63072000" always;
+
     <?php else: ?>
 
         listen 80; listen [::]:80;
