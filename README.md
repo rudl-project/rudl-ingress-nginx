@@ -18,5 +18,3 @@ Nginx ingress controller
 
 
 
-
-
