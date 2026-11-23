@@ -19,6 +19,21 @@ try {
     throw $e;
 }
 
+echo "Startup configuration: " . json_encode([
+    "DEV_MODE" => DEV_MODE,
+    "RUDL_GITDB_URL" => RUDL_GITDB_URL,
+    "RUDL_GITDB_CLIENT_ID" => RUDL_GITDB_CLIENT_ID,
+    "INGRESS_SCOPE" => INGRESS_SCOPE,
+    "INGRESS_OBJECT_NAME" => INGRESS_OBJECT_NAME,
+    "SSL_CERT_SCOPE" => SSL_CERT_SCOPE,
+    "SSL_CERT_ISSUER_URL" => SSL_CERT_ISSUER_URL,
+    "CERT_STORE_DIR" => CERT_STORE_DIR,
+    "VHOST_TEMPLATE_FILE" => VHOST_TEMPLATE_FILE,
+    "VHOST_TARGET_FILE" => VHOST_TARGET_FILE,
+    "ACME_TEMPLATE_FILE" => ACME_TEMPLATE_FILE,
+    "ACME_TARGET_FILE" => ACME_TARGET_FILE,
+], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";
+
 $runner = new UpdateRunner($gitdb);
 
 // Update all 5 runs to update newly deployed Vhosts

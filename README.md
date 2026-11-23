@@ -5,6 +5,9 @@ Nginx ingress controller
 
 ## Configuration
 
+The controller logs its configuration once at startup. `RUDL_GITDB_CLIENT_SECRET`
+is excluded from this output.
+
 | Environment Variable      | Description |
 |---------------------------|-------------|
 | RUDL_GITDB_URL            | The full url to GitDb Service (https://some.tld or http://gitdb-service) |
